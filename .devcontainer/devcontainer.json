@@ -23,5 +23,6 @@
                 "eamodio.gitlens" // GitLens拡張機能
             ]
         }
-    }
+    },
+    "postCreateCommand": "chmod +x /workspace/setup-git.sh && /workspace/setup-git.sh" // コンテナ作成後にGitの設定を行うスクリプトを実行
 }

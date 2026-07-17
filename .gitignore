@@ -16,6 +16,7 @@ pnpm-debug.log*
 !.env.example
 local.settings.json
 *.local
+setup-git.sh
 
 # Python / Azure Functions backend
 __pycache__/
@@ -35,6 +36,13 @@ ENV/
 .python_packages/
 *.egg-info/
 .eggs/
+# Azurite artifacts
+__blobstorage__
+__queuestorage__
+__tablestorage__/
+__azurite_db*.json
+AzuriteConfig
+
 
 # Azure / deployment artifacts
 .azure/
