@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "=====setup-git.sh start======="
+# gitのブランチを設定
+git config --global init.defaultBranch main
+# gitのユーザー名とメールアドレスを設定
+git config --global user.name "your-name"
+git config --global user.email "sample@example.com"
+echo "=====setup-git.sh end======="

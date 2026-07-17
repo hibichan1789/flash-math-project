@@ -19,9 +19,6 @@ USER vscode
 # 作業ディレクトリ
 WORKDIR /workspace
 
-# gitのブランチを設定
-RUN git config --global init.defaultBranch main
-
 # npmのグローバルインストール先をユーザーのホームディレクトリに変更してPATHを更新
 # 権限エラー回避のため、 npmのグローバルインストール先をユーザーのホームディレクトリに変更している
 RUN mkdir -p /home/vscode/.npm-global \
@@ -33,14 +30,6 @@ RUN npm install -g \
     npm@latest \
     azure-functions-core-tools@4 \
     azurite
-
-# バージョン確認用コマンド
-RUN echo "Node.js version: $(node -v)" && \
-    echo "npm version: $(npm -v)" && \
-    echo "Azure Functions Core Tools version: $(func --version)" && \
-    echo "Azurite version: $(azurite --version)" && \
-    echo "Python version: $(python3 --version)" && \
-    echo "pip version: $(pip --version)"
 
 # デフォルトコマンド
 CMD ["sleep", "infinity"]
