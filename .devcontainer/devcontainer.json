@@ -1,0 +1,27 @@
+// フロントエンドをVite React(TypeScript) Tailwind バックエンドをAzureFunctions(Python)で構築するためのdevcontainer設定ファイル
+{
+    "name": "Vite React + Tailwind + Azure Functions (Python) Dev Container",
+    "build": {
+        "dockerfile": "./Dockerfile"
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind", // ホストマシンの作業ディレクトリをコンテナ内の/workspaceにマウント
+    "workspaceFolder": "/workspace",
+    "remoteUser": "vscode",
+    "updateRemoteUserUID": true, // vscodeユーザーのUIDをホストマシンのUIDに合わせることで、ホストマシンとコンテナ間でファイルの権限問題を回避する
+    "forwardPorts": [5173, 7071, 10000, 10001, 10002], // Vite Reactのデフォルトポート、Azure Functionsのデフォルトポート
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuritetools.vscode-azurefunctions", // Azure Functions拡張機能
+                "ms-python.python", // Python拡張機能
+                "ms-python.vscode-pylance", // Python言語サーバー,
+                "ms-python.black-formatter", // Pythonコードフォーマッター
+                "esbenp.prettier-vscode", // Prettierコードフォーマッター
+                "dbaeumer.vscode-eslint", // ESLintコードフォーマッター
+                "bradlc.vscode-tailwindcss", // Tailwind CSS拡張機能
+                "streetsidesoftware.code-spell-checker", // スペルチェック拡張機能
+                "eamodio.gitlens" // GitLens拡張機能
+            ]
+        }
+    }
+}
