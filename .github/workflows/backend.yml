@@ -9,7 +9,7 @@ on:
       - ".github/workflows/backend.yml"
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: './deploy-artifact'
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: './deploy-artifact/functionapp.zip'
   PYTHON_VERSION: '3.11'
 
 jobs:
@@ -36,23 +36,26 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Prepare deployment directory
+      - name: Create deployment archive
         run: |
-          rm -rf ../artifact/deploy-package
-          mkdir -p ../artifact/deploy-package
-          find . -mindepth 1 -maxdepth 1 -exec cp -a {} ../artifact/deploy-package/ \;
-          cp -f .funcignore ../artifact/deploy-package/.funcignore
-
-      - name: Verify deployment package contents
-        run: |
-          ls -la ../artifact/deploy-package
-          test -f ../artifact/deploy-package/.funcignore
+          mkdir -p ../artifact
+          zip -r ../artifact/functionapp.zip . \
+            -x ".venv/*" \
+            -x ".vscode/*" \
+            -x "__pycache__/*" \
+            -x "*.pyc" \
+            -x "local.settings.json" \
+            -x "__azurite_*.json" \
+            -x "__blobstorage__/*" \
+            -x "__queuestorage__/*" \
+            -x "AzuriteConfig" \
+            -x ".git/*"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: function-app
-          path: artifact/deploy-package
+          path: artifact/functionapp.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -70,7 +73,7 @@ jobs:
       - name: Confirm deployment package exists
         run: |
           ls -la ./deploy-artifact
-          test -d ./deploy-artifact
+          test -f ./deploy-artifact/functionapp.zip
 
       - name: Deploy to Azure Functions
         uses: Azure/functions-action@v1
