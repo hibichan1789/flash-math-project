@@ -1,17 +1,16 @@
 # .devcontainer/Dockerfile
 FROM mcr.microsoft.com/devcontainers/python:3.11
 
-# 開発に必要なツールとNode.jsのインストール
+# 開発に必要なツールとNode.jsとazure CLIのインストール
 RUN apt-get update && apt-get install -y \
     curl \
     git \
     build-essential \
     && curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
+    && curl -fsSL https://aka.ms/InstallAzureCLIDeb | bash -\
     && apt-get install -y nodejs \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
-
 
 # 実行ユーザーをrootからvscodeに変更
 USER vscode

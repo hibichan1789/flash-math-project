@@ -1,0 +1,23 @@
+# Local development and virtual environments
+.git/
+.vscode/
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.log
+
+# Azurite / local storage emulator artifacts
+AzuriteConfig
+__azurite_db_blob__.json
+__azurite_db_blob_extent__.json
+__azurite_db_queue__.json
+__azurite_db_queue_extent__.json
+__azurite_db_table__.json
+__blobstorage__/
+__queuestorage__/
+
+# Local settings and sample files
+local.settings.json
+local.settings.json.example

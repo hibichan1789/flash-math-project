@@ -1,5 +1,10 @@
 # フラッシュ数学アプリ
 
+## 必要な環境
+- Docker Desktop
+- Visual Studio Code
+- Dev Containers拡張機能
+
 ## セットアップ方法
 ### これは絶対に行ってください
 ```bash
@@ -32,6 +37,20 @@ azurite --silent
 #### 別ターミナルでazure functionsをローカルで実行するために下のコマンドを実行する
 ```bash
 func start --python
+```
+
+### Azure Login方法
+#### 以下のコマンドを実行してログインしサブスクリプションの選択を数字でする
+```bash
+az login
+```
+#### サブスクリプションの確認
+```bash
+az account show
+```
+### Azure Functions デプロイ方法
+```bash
+func azure
 ```
 
 ## 学んだこと
