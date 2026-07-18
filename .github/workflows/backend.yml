@@ -41,6 +41,12 @@ jobs:
           rm -rf ../artifact/deploy-package
           mkdir -p ../artifact/deploy-package
           find . -mindepth 1 -maxdepth 1 -exec cp -a {} ../artifact/deploy-package/ \;
+          cp -f .funcignore ../artifact/deploy-package/.funcignore
+
+      - name: Verify deployment package contents
+        run: |
+          ls -la ../artifact/deploy-package
+          test -f ../artifact/deploy-package/.funcignore
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
