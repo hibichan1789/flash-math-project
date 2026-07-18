@@ -7,7 +7,7 @@ blue_print = func.Blueprint()
 @blue_print.route(route="health", methods=["GET"])
 def health(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(
-        body='{"status": "ok"}',
+        body='{"status": "ok", "CI/CD": "OK"}',
         mimetype="application/json",
         status_code=200
     )

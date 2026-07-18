@@ -34,7 +34,7 @@ flash-math-project/
 │   ├── api/
 │   │   ├── question.py
 │   │   ├── answer.py
-│   │   └── health.py
+│   │   └── health.py           # 動作確認用
 │   │
 │   ├── services/
 │   │   ├── generator.py

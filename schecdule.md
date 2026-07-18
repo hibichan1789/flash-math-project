@@ -1,11 +1,11 @@
 ## 開発環境
 - Todo
-- [ ] DevContainer作成
-- [ ] Dockerfile作成
-- [ ] Azure Functions起動確認
+- [x] DevContainer作成
+- [x] Dockerfile作成
+- [x] Azure Functions起動確認
 
 ## バックエンド
-- [ ] Health API
+- [x] Health API
 - [ ] Question API
 - [ ] Answer API
 - [ ] Unit Test
